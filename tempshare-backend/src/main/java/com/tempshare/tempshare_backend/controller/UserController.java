@@ -24,5 +24,14 @@ public class UserController {
     @PostMapping
     public UserModel createUser(@RequestBody UserModel userModel) {
         return userService.createUser(userModel);
+
     }
+
+    @PutMapping("/{id}")
+    public UserModel updateUser(
+            @PathVariable Long id,
+            @RequestBody UserModel userModel ){
+        return userService.updateUser(id, userModel);
+    }
+
 }

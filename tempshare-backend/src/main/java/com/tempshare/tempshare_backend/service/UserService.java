@@ -11,9 +11,11 @@ import java.util.List;
 public class UserService {
 
     private final UserRepository userRepository;
+
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
+
     public UserModel createUser(UserModel userModel) {
         userModel.setJoinedDate(new Date(System.currentTimeMillis()));
         return userRepository.save(userModel);
@@ -21,5 +23,17 @@ public class UserService {
 
     public List<UserModel> getAllUsers() {
         return userRepository.findAll();
+    }
+
+    public UserModel updateUser(Long id, UserModel newUserData) {
+        UserModel existingUser = userRepository.findById(id)
+                .orElseThrow(()->
+                        new RuntimeException("user not found")
+                );
+
+        existingUser.setUsername(newUserData.getUsername());
+        existingUser.setPassword(newUserData.getPassword());
+
+        return userRepository.save(existingUser);
     }
 }
