@@ -9,7 +9,6 @@ import java.util.List;
 
 @Service
 public class UserService {
-
     private final UserRepository userRepository;
 
     public UserService(UserRepository userRepository) {
@@ -25,12 +24,15 @@ public class UserService {
         return userRepository.findAll();
     }
 
+    public UserModel getUserById(Long id){
+        return userRepository.findById(id).orElseThrow(() -> new RuntimeException("User DOES not exist"));
+    }
+
     public UserModel updateUser(Long id, UserModel newUserData) {
         UserModel existingUser = userRepository.findById(id)
                 .orElseThrow(()->
                         new RuntimeException("user not found")
                 );
-
         existingUser.setUsername(newUserData.getUsername());
         existingUser.setPassword(newUserData.getPassword());
 
@@ -43,5 +45,4 @@ public class UserService {
         else
             userRepository.deleteById(id);
     }
-
 }
