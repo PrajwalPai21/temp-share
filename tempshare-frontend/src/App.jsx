@@ -1,16 +1,17 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Testing from "./pages/Testing";
+import Navbar from "./components/Navbar";
 
 const App = () => {
-  const [users, setUsers] = useState([]);
-  useEffect(() => {
-    axios
-      .get("http://localhost:8080/api/users")
-      .then((res) => setUsers(res.data))
-      .catch((err) => console.error(err));
-  }, []);
-
-  return <pre>{JSON.stringify(users, null, 2)}</pre>;
+  return (
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/testing" element={<Testing />}></Route>
+      </Routes>
+    </BrowserRouter>
+  );
 };
 
 export default App;

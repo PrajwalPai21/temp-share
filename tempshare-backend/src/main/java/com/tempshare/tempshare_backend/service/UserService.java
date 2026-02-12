@@ -20,7 +20,7 @@ public class UserService {
         return userRepository.save(userModel);
     }
 
-    public List<UserModel> getAllUsers() {
+    public List<UserModel>  getAllUsers() {
         return userRepository.findAll();
     }
 
