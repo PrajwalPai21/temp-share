@@ -31,7 +31,6 @@ public class UserController {
     @PostMapping
     public UserModel createUser(@RequestBody UserModel userModel) {
         return userService.createUser(userModel);
-
     }
 
     @PutMapping("/{id}")

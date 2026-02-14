@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
+import { Navbar, Nav, Container, NavDropdown, Button } from "react-bootstrap";
 const Navigbar = () => {
   return (
     <>
@@ -18,6 +18,7 @@ const Navigbar = () => {
                 </NavDropdown.Item>
               </NavDropdown>
             </Nav>
+            <Button variant="light">Login</Button>
           </Navbar.Collapse>
         </Container>
       </Navbar>
