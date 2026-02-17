@@ -38,7 +38,13 @@ public class AuthController {
                         request.getPassword()
                 )
         );
-        String token =  jwtUtil.generateToken(request.getUsername());
+        UserModel user = userService.findByUsername(request.getUsername());
+
+        String token = jwtUtil.generateToken(
+                user.getUsername(),
+                user.getRole()
+        );
+
         return ResponseEntity.ok(token);
     }
 }

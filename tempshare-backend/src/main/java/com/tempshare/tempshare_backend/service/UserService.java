@@ -55,5 +55,11 @@ public class UserService {
             userRepository.deleteById(id);
     }
 
+    public UserModel findByUsername(String username) {
+        return userRepository.findByUsername(username)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+    }
+
+
 
 }

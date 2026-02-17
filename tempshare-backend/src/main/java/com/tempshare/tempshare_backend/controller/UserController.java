@@ -45,4 +45,9 @@ public class UserController {
         userService.deleteUserId(id);
         return "Successfully deleted!";
     }
+
+    @GetMapping("/admin/test")
+    public String adminTest() {
+        return "Admin only";
+    }
 }

@@ -2,12 +2,14 @@ package com.tempshare.tempshare_backend.service;
 
 import com.tempshare.tempshare_backend.model.UserModel;
 import com.tempshare.tempshare_backend.repository.UserRepository;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class UserLoginService implements UserDetailsService {
@@ -27,7 +29,8 @@ public class UserLoginService implements UserDetailsService {
                         new UsernameNotFoundException("User not found"));
 
         return new org.springframework.security.core.userdetails.User(
-                user.getUsername(), user.getPassword(), new ArrayList<>()
+                user.getUsername(), user.getPassword(),
+                List.of(new SimpleGrantedAuthority("ROLE_" + user.getRole()))
         );
     }
 }
