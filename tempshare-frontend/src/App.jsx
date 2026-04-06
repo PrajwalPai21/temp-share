@@ -1,19 +1,26 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-import Testing from "./pages/Testing";
-import Navigbar from "./components/Navigbar.jsx";
-import Home from "./pages/Home";
-
-const App = () => {
+import Dashboard from "./pages/Dashboard";
+import SignUpPage from "./pages/SignUpPage";
+import LoginPage from "./pages/LoginPage.jsx";
+import Contact from "./pages/Contact.jsx";
+import { UsersPage } from "./pages/UsersPage.jsx";
+import { Home } from "./pages/Home.jsx";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+import Navbar from "./components/Navbar.jsx";
+function App() {
   return (
     <BrowserRouter>
-      <Navigbar />
-      <Routes>
-        <Route path="/home" element={<Home />}></Route>
-        <Route path="/testing" element={<Testing />}></Route>
-      </Routes>
+      <Navbar />
+      <div className="">
+        <Routes>
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignUpPage />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/all-users" element={<UsersPage />} />
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </div>
     </BrowserRouter>
   );
-};
-
+}
 export default App;
