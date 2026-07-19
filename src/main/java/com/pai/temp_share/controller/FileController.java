@@ -17,20 +17,20 @@ public class FileController {
         this.fileService = fileService;
     }
 
-    @PostMapping("/test")
-    public ResponseEntity<FileMetadata> createTestFile(){
-        FileMetadata saved = fileService.saveTestFile();
-        return ResponseEntity.ok(saved);
-    }
+//    @PostMapping("/test")
+//    public ResponseEntity<FileMetadata> createTestFile(){
+//        FileMetadata saved = fileService.saveTestFile();
+//        return ResponseEntity.ok(saved);
+//    }
 
-    @GetMapping("/{shareToken}")
-    public ResponseEntity<FileMetadata> getFileByToken(@PathVariable String shareToken){
-        Optional<FileMetadata> file = fileService.findByShareToken(shareToken);
+//    @GetMapping("/{shareToken}")
+//    public ResponseEntity<FileMetadata> getFileByToken(@PathVariable String shareToken){
+//        Optional<FileMetadata> file = fileService.findByShareToken(shareToken);
 
-        if (file.isPresent()) {
-            return ResponseEntity.ok(file.get());
-        } else{
-            return ResponseEntity.notFound().build();
-        }
-    }
+//        if (file.isPresent()) {
+//            return ResponseEntity.ok(file.get());
+//        } else{
+//            return ResponseEntity.notFound().build();
+//        }
+//}
 }

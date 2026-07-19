@@ -15,16 +15,16 @@ public class FileService {
         this.fileMetadataRepository = fileMetadataRepository;
     }
 
-    public FileMetadata saveTestFile(){
-        FileMetadata file = new FileMetadata(
-                "test-document.pdf",
-                "stored-test-document.pdf",
-                1024L,
-                "application/pdf",
-                LocalDateTime.now().plusHours(24)
-        );
-        return fileMetadataRepository.save(file);
-    }
+//    public FileMetadata saveTestFile(){
+//        FileMetadata file = new FileMetadata(
+//                "test-document.pdf",
+//                "stored-test-document.pdf",
+//                1024L,
+//                "application/pdf",
+//                LocalDateTime.now().plusHours(24)
+//        );
+//        return fileMetadataRepository.save(file);
+//    }
 
     public Optional<FileMetadata> findByShareToken(String shareToken){
         return fileMetadataRepository.findByShareToken(shareToken);
